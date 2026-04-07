@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { toNodeHandler } from "better-auth/node";
 import { auth } from "./app/lib/auth";
 import { notFound } from "./app/middleware/notFound";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
 
 const app: Application = express();
 
@@ -25,8 +26,6 @@ app.use(
 // Enable URL-encoded form data parsing
 app.use(express.urlencoded({ extended: true }));
 
-app.all("/api/auth/*splat", toNodeHandler(auth));
-
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cookieParser());
@@ -36,6 +35,9 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello, Niramoy!");
 });
 
+app.all("/api/auth/*splat", toNodeHandler(auth));
+
+app.use(globalErrorHandler);
 app.use(notFound);
 
 export default app;

@@ -11,18 +11,15 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
 
+  emailAndPassword: {
+    enabled: true,
+  },
   socialProviders: {
     google: {
       clientId: envVars.GOOGLE_CLIENT_ID,
       clientSecret: envVars.GOOGLE_CLIENT_SECRET,
       accessType: "offline",
       prompt: "select_account consent",
-      mapProfileToUser: () => {
-        return {
-          role: Role.CUSTOMER,
-          isBanned: false,
-        };
-      },
     },
   },
 
@@ -49,35 +46,8 @@ export const auth = betterAuth({
     },
   },
 
-  redirectURLs: {
-    signIn: `${envVars.FRONTEND_URL}/api/v1/auth/google/success`,
-  },
-
   trustedOrigins: [
-    process.env.BETTER_AUTH_URL || "http://localhost:5000",
+    envVars.BETTER_AUTH_URL || "http://localhost:5000",
     envVars.FRONTEND_URL,
   ],
-
-  // advanced: {
-  //   // disableCSRFCheck: true,
-  //   useSecureCookies: false,
-  //   cookies: {
-  //     state: {
-  //       attributes: {
-  //         sameSite: "none",
-  //         secure: true,
-  //         httpOnly: true,
-  //         path: "/",
-  //       },
-  //     },
-  //     sessionToken: {
-  //       attributes: {
-  //         sameSite: "none",
-  //         secure: true,
-  //         httpOnly: true,
-  //         path: "/",
-  //       },
-  //     },
-  //   },
-  // },
 });
