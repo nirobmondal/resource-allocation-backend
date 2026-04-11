@@ -1,6 +1,6 @@
 import { MedicineWhereInput } from "../../../generated/prisma/models";
 import { prisma } from "../../lib/prisma";
-import { IOptionsResult } from "../utils/paginationSortingFilteringHelper";
+import { IOptionsResult } from "../../utils/paginationSortingFilteringHelper";
 import {
   ICreateMedicinePayload,
   IUpdateMedicinePayload,

@@ -3,7 +3,7 @@ import { catchAsync } from "../../shared/catchAsync";
 import { medicineService } from "./medicine.service";
 import { sendResponse } from "../../shared/sendResponse";
 import status from "http-status";
-import paginationSortingFilteringHelper from "../utils/paginationSortingFilteringHelper";
+import paginationSortingFilteringHelper from "../../utils/paginationSortingFilteringHelper";
 
 const createMedicine = catchAsync(async (req: Request, res: Response) => {
   const { userId } = req.user;

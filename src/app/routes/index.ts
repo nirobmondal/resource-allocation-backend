@@ -5,13 +5,16 @@ import { sellerRoute } from "../module/seller/seller.route";
 import { medicineRoute } from "../module/medincine/medicine.route";
 import { cartRoute } from "../module/cart/cart.route";
 import { orderRoute } from "../module/order/order.route";
+import { reviewRoute } from "../module/review/review.route";
 
 const router = Router();
+
 router.use("/category", categoryRoute);
 router.use("/manufacturer", manufacturerRoute);
 router.use("/seller", sellerRoute);
 router.use("/medicine", medicineRoute);
 router.use("/cart", cartRoute);
 router.use("/order", orderRoute);
+router.use("/review", reviewRoute);
 
 export const indexRoutes = router;
