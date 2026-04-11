@@ -1,12 +1,3 @@
-/**
- * create medicine => seller
- * get all medicine => public with pagination(price, category, manufacturer, name, sort(asc/desc), limit, page)
- * get medicine by id => public
- * get medicine by sellerId => seller
- * update medicine => seller
- * delete medicine => seller
- */
-
 import { MedicineWhereInput } from "../../../generated/prisma/models";
 import { prisma } from "../../lib/prisma";
 import { IOptionsResult } from "../utils/paginationSortingFilteringHelper";
@@ -95,11 +86,11 @@ const getAllMedicines = async (query: IOptionsResult) => {
   });
 
   return {
-    data: medicines,
+    medicines,
     meta: {
-      totalMedicines: total,
-      currentPage: page,
-      perPage: limit,
+      total,
+      page,
+      limit,
       totalPages: Math.ceil(total / limit),
     },
   };
