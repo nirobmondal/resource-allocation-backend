@@ -1,0 +1,9 @@
+model Resource {
+  id       String    @id @default(uuid(7))
+  name     String
+  type     String
+  capacity Int
+  bookings Booking[]
+
+  @@map("resources")
+}

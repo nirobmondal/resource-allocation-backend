@@ -1,0 +1,11 @@
+model Booking {
+  id          String   @id @default(uuid(7))
+  resourceId  String
+  requestedBy String
+  bookingDate DateTime @default(now())
+  status      Status   @default(CONFIRMED)
+  resource    Resource @relation(fields: [resourceId], references: [id], onDelete: Restrict)
+
+  @@index([resourceId, bookingDate])
+  @@map("bookings")
+}
